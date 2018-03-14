@@ -18,6 +18,10 @@ class CreateProductImageTable extends Migration
             $table->unsignedInteger('productId');
             $table->text('image');
             $table->boolean('isMain');
+            $table->foreign('productId')
+                  ->references('id')->on('product')
+                  ->onUpdate('cascade')
+                  ->onDelete('restrict');
         });
     }
 

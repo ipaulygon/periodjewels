@@ -17,7 +17,7 @@ class CreateUtilityTable extends Migration
         Schema::create('utility', function (Blueprint $table) {
             $table->engine = 'InnoDB';            
             $table->increments('id');
-            $table->string('companyName',100);
+            $table->string('name',100);
             $table->text('address');
             $table->text('logo');
         });
