@@ -135,7 +135,7 @@ class ProductController extends Controller
                         $extension = $certificate->getClientOriginalExtension();
                         $certificateFile = "certificates/".$date.'.'.$extension;
                         // $certificate->move("certificates",$certificateFile);
-                        $s3->put($certificateFile,file_get_contents($certificate));
+                        $s3->put($certificateFile,file_get_contents($certificate),'public');
                         ProductCertificate::create([
                             'productId' => $product->id,
                             'certificate' => $certificateFile
@@ -148,7 +148,6 @@ class ProductController extends Controller
                         $extension = $image->getClientOriginalExtension();
                         $imageFile = "images/".$date.'.'.$extension;
                         // $image->move("images",$imageFile);
-                        $s3->put($imageFile,file_get_contents($image));                        
                         ProductImage::create([
                             'productId' => $product->id,
                             'image' => $imageFile,
@@ -254,7 +253,6 @@ class ProductController extends Controller
                     'productId' => $product->id,
                     'price' => str_replace(',','',$request->price)                    
                 ]);
-                $s3 = Storage::disk('s3');                
                 $certificates = $request->file('certificates');
                 $images = $request->file('images');
                 if(!empty($certificates)){
@@ -266,8 +264,7 @@ class ProductController extends Controller
                         $date = date("Ymdhis".substr((string)microtime(), 1, 8));
                         $extension = $certificate->getClientOriginalExtension();
                         $certificateFile = "certificates/".$date.'.'.$extension;
-                        // $certificate->move("certificates",$certificateFile);
-                        $s3->put($certificateFile,file_get_contents($certificate));                        
+                        $certificate->move("certificates",$certificateFile);
                         ProductCertificate::create([
                             'productId' => $product->id,
                             'certificate' => $certificateFile
@@ -283,8 +280,7 @@ class ProductController extends Controller
                         $date = date("Ymdhis".substr((string)microtime(), 1, 8));
                         $extension = $image->getClientOriginalExtension();
                         $imageFile = "images/".$date.'.'.$extension;
-                        // $image->move("images",$imageFile);
-                        $s3->put($imageFile,file_get_contents($image)); 
+                        $image->move("images",$imageFile);
                         ProductImage::create([
                             'productId' => $product->id,
                             'image' => $imageFile,
