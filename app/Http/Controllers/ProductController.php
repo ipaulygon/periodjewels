@@ -148,6 +148,7 @@ class ProductController extends Controller
                         $extension = $image->getClientOriginalExtension();
                         $imageFile = "images/".$date.'.'.$extension;
                         // $image->move("images",$imageFile);
+                        $s3->put($imageFile,file_get_contents($image),'images');
                         ProductImage::create([
                             'productId' => $product->id,
                             'image' => $imageFile,
@@ -255,6 +256,7 @@ class ProductController extends Controller
                 ]);
                 $certificates = $request->file('certificates');
                 $images = $request->file('images');
+                $s3 = Storage::disk('s3');
                 if(!empty($certificates)){
                     foreach($product->certificate as $certificate){
                         (file_exists($certificate->certificate) ? unlink($certificate->certificate) : '');
@@ -264,7 +266,8 @@ class ProductController extends Controller
                         $date = date("Ymdhis".substr((string)microtime(), 1, 8));
                         $extension = $certificate->getClientOriginalExtension();
                         $certificateFile = "certificates/".$date.'.'.$extension;
-                        $certificate->move("certificates",$certificateFile);
+                        // $certificate->move("certificates",$certificateFile);
+                        $s3->put($certificateFile,file_get_contents($certificate),'certificates');
                         ProductCertificate::create([
                             'productId' => $product->id,
                             'certificate' => $certificateFile
@@ -280,7 +283,8 @@ class ProductController extends Controller
                         $date = date("Ymdhis".substr((string)microtime(), 1, 8));
                         $extension = $image->getClientOriginalExtension();
                         $imageFile = "images/".$date.'.'.$extension;
-                        $image->move("images",$imageFile);
+                        // $image->move("images",$imageFile);
+                        $s3->put($imageFile,file_get_contents($image),'images');
                         ProductImage::create([
                             'productId' => $product->id,
                             'image' => $imageFile,
