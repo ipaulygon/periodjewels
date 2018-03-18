@@ -15,6 +15,7 @@ class CreateProductPriceTable extends Migration
     {
         Schema::create('product_price', function (Blueprint $table) {
             $table->engine = 'InnoDB';
+            $table->increments('id');
             $table->unsignedInteger('productId');
             $table->double('price',15,2);
             $table->timestamps();

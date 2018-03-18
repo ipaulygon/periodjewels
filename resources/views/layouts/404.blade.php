@@ -84,7 +84,12 @@
 
                             <h3>
                                 We could not find the page you were looking for.
-                                Meanwhile, you may return to <a href="{{url('/dashboard')}}">dashboard</a>.
+                                Meanwhile, you may return to 
+                                @if(\Auth::user())
+                                <a href="{{url('/dashboard')}}">dashboard</a>.
+                                @else
+                                <a href="{{url('/')}}">home</a>.
+                                @endif
                             </h3>
                             </div>
                             <!-- /.error-content -->
@@ -95,7 +100,7 @@
             <!-- /.content -->
         </div>
         <footer class="main-footer">
-            <strong>Copyright © {{date('Y')}} <a href="http://facebook.com">Periodjewels</a>.</strong> All rights reserved.
+            <strong>Copyright © {{date('Y')}} <a href="https://www.instagram.com/periodjewels_inc/">Periodjewels</a>.</strong> All rights reserved.
         </footer>
     </div>
     <!-- Scripts -->

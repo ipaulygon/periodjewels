@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use App\Utility;
 
 class Handler extends ExceptionHandler
 {
@@ -44,6 +45,16 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        $util = Utility::find(1);
+        if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+            return response()->view('layouts.404',compact('util'));
+        }
+        if ($exception instanceof \Symfony\Component\HttpKernel\Exception\HttpException) {
+            return response()->view('layouts.404',compact('util'));
+        }
+        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
+            return response()->view('layouts.404',compact('util'));
+        }
         return parent::render($request, $exception);
     }
 
@@ -56,10 +67,10 @@ class Handler extends ExceptionHandler
      */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
+        $util = Utility::find(1);
         if ($request->expectsJson()) {
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
-
-        return redirect()->guest(route('login'));
+        return response()->view('auth.login',compact('util'));
     }
 }

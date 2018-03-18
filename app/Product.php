@@ -9,6 +9,7 @@ class Product extends Model
     protected $table = 'product';
     public $timestamps = false;
     protected $fillable = [
+    	'gemId',
     	'jewelryId',
     	'carat',
         'color',
@@ -16,11 +17,15 @@ class Product extends Model
         'cut',
         'origin',
         'description',
-        'certificate',
         'price',
+        'isSold',
         'isActive'
     ];
 
+    public function gem(){
+        return $this->belongsTo('App\Gem','gemId');
+    }
+    
     public function jewelry(){
         return $this->belongsTo('App\Jewelry','jewelryId');
     }
@@ -31,5 +36,9 @@ class Product extends Model
 
     public function image(){
         return $this->hasMany('App\ProductImage','productId');
+    }
+
+    public function certificate(){
+        return $this->hasMany('App\ProductCertificate','productId');
     }
 }

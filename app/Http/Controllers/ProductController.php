@@ -9,8 +9,14 @@ use Response;
 use Session;
 use DB;
 use Illuminate\Validation\Rule;
+use App\Gem;
 use App\Jewelry;
 use App\Product;
+use App\ProductCertificate;
+use App\ProductPrice;
+use App\ProductImage;
+use App\Country;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -24,14 +30,20 @@ class ProductController extends Controller
         $products = Product::where('isActive',1)->get();
         $jewelries = DB::table('jewelry as j')
             ->where('isActive',1)
-            ->orderBy('name','desc')
+            ->orderBy('name')
             ->select('j.*')
             ->get();
-        return View('product.index',compact('products','jewelries'));
+        $gems = DB::table('gem as g')
+            ->where('isActive',1)
+            ->orderBy('name')
+            ->select('g.*')
+            ->get();
+        $countries = Country::countries();
+        return View('product.index',compact('products','gems','jewelries','countries'));
     }
 
     public function GetData($set){
-        return Product::where('isActive',$set)->orderBy('name')->get();
+        return Product::where('isActive',$set)->get();
     }
 
     public function switch(Request $request){
@@ -60,7 +72,97 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $rules = [
+            'gem' => 'required',
+            'jewelry' => 'required',
+            'carat' => 'required',
+            'color' => 'max:50',
+            'clarity' => 'max:50',
+            'cut' => 'max:50',
+            'origin' => 'max:50',
+            'description' => 'required',
+            'price' => 'required',
+            'certificates.*' => 'required',
+            'images.*' => 'required'
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.'
+        ];
+        $niceNames = [
+            'gem' => 'Gem Stone',
+            'jewelry' => 'Jewelry',
+            'carat' => 'Carat',
+            'color' => 'Color',
+            'clarity' => 'Clarity',
+            'cut' => 'Cut',
+            'origin' => 'Origin',
+            'description' => 'Description',
+            'price' => 'Price',
+            'certificates.*' => 'Certificate(s)',
+            'images.*' => 'Image(s)'
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return response()->json(['errors'=>$validator->errors()]);
+        }
+        else{
+            try{
+                DB::beginTransaction();
+                $product = Product::create([
+                    'gemId' => trim($request->gem),
+                    'jewelryId' => trim($request->jewelry),
+                    'carat' => str_replace(',','',$request->carat),
+                    'color' => trim($request->color),
+                    'clarity' => trim($request->clarity),
+                    'cut' => trim($request->cut),
+                    'origin' => trim($request->origin),
+                    'description' => trim($request->description),
+                    'price' => str_replace(',','',$request->price)
+                ]);
+                ProductPrice::create([
+                    'productId' => $product->id,
+                    'price' => str_replace(',','',$request->price)                    
+                ]);
+                $certificates = $request->file('certificates');
+                $images = $request->file('images');
+                if(!empty($certificates)){
+                    foreach ($certificates as $key => $certificate) {
+                        $date = date("Ymdhis".substr((string)microtime(), 1, 8));
+                        $extension = $certificate->getClientOriginalExtension();
+                        $certificateFile = "certificates/".$date.'.'.$extension;
+                        $certificate->move("certificates",$certificateFile);
+                        ProductCertificate::create([
+                            'productId' => $product->id,
+                            'certificate' => $certificateFile
+                        ]);
+                    }
+                }
+                if(!empty($images)){
+                    foreach ($images as $key => $image) {
+                        $date = date("Ymdhis".substr((string)microtime(), 1, 8));
+                        $extension = $image->getClientOriginalExtension();
+                        $imageFile = "images/".$date.'.'.$extension;
+                        $image->move("images",$imageFile);
+                        ProductImage::create([
+                            'productId' => $product->id,
+                            'image' => $imageFile,
+                            'isMain' => ($key == $request->main ? 1 : 0)
+                        ]);
+                    }
+                }
+                DB::commit();
+                $request->session()->flash('success', 'Successfully added.');
+                $products = $this->GetData(1);
+                return view('product.active',compact('products'));
+            }catch(\Illuminate\Database\QueryException $e){
+                DB::rollBack();
+                $errMess = $e->getMessage();
+                $request->session()->flash('error', 'Please check your network connection');
+            }
+        }
     }
 
     /**
@@ -71,7 +173,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        return View('layouts.404');
     }
 
     /**
@@ -82,7 +184,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        return View('layouts.404');
     }
 
     /**
@@ -92,9 +194,112 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $rules = [
+            'gem' => 'required',
+            'jewelry' => 'required',
+            'carat' => 'required',
+            'color' => 'max:50',
+            'clarity' => 'max:50',
+            'cut' => 'max:50',
+            'origin' => 'max:50',
+            'description' => 'required',
+            'price' => 'required',
+            'certificates.*' => 'required',
+            'images.*' => 'required'
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.'
+        ];
+        $niceNames = [
+            'gem' => 'Gem Stone',
+            'jewelry' => 'Jewelry',
+            'carat' => 'Carat',
+            'color' => 'Color',
+            'clarity' => 'Clarity',
+            'cut' => 'Cut',
+            'origin' => 'Origin',
+            'description' => 'Description',
+            'price' => 'Price',
+            'certificates.*' => 'Certificate(s)',
+            'images.*' => 'Image(s)'
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return response()->json(['errors'=>$validator->errors()]);
+        }
+        else{
+            try{
+                DB::beginTransaction();
+                $product = Product::findOrFail($request->idUpdate);
+                $product->update([
+                    'gemId' => trim($request->gem),
+                    'jewelryId' => trim($request->jewelry),
+                    'carat' => str_replace(',','',$request->carat),
+                    'color' => trim($request->color),
+                    'clarity' => trim($request->clarity),
+                    'cut' => trim($request->cut),
+                    'origin' => trim($request->origin),
+                    'description' => trim($request->description),
+                    'price' => str_replace(',','',$request->price)
+                ]);
+                ProductPrice::create([
+                    'productId' => $product->id,
+                    'price' => str_replace(',','',$request->price)                    
+                ]);
+                $certificates = $request->file('certificates');
+                $images = $request->file('images');
+                if(!empty($certificates)){
+                    foreach($product->certificate as $certificate){
+                        (file_exists($certificate->certificate) ? unlink($certificate->certificate) : '');
+                    }
+                    ProductCertificate::where('productId',$product->id)->delete();
+                    foreach ($certificates as $key => $certificate) {
+                        $date = date("Ymdhis".substr((string)microtime(), 1, 8));
+                        $extension = $certificate->getClientOriginalExtension();
+                        $certificateFile = "certificates/".$date.'.'.$extension;
+                        $certificate->move("certificates",$certificateFile);
+                        ProductCertificate::create([
+                            'productId' => $product->id,
+                            'certificate' => $certificateFile
+                        ]);
+                    }
+                }
+                if(!empty($images)){
+                    foreach($product->image as $image){
+                        (file_exists($image->image) ? unlink($image->image) : '');
+                    }
+                    ProductImage::where('productId',$product->id)->delete();                    
+                    foreach ($images as $key => $image) {
+                        $date = date("Ymdhis".substr((string)microtime(), 1, 8));
+                        $extension = $image->getClientOriginalExtension();
+                        $imageFile = "images/".$date.'.'.$extension;
+                        $image->move("images",$imageFile);
+                        ProductImage::create([
+                            'productId' => $product->id,
+                            'image' => $imageFile,
+                            'isMain' => ($key == $request->main ? 1 : 0)
+                        ]);
+                    }
+                }else{
+                    ProductImage::where('productId',$request->idUpdate)->update(['isMain'=>0]);
+                    $images = ProductImage::where('productId',$request->idUpdate)->get();
+                    $images[$request->main]->update(['isMain'=>1]);
+                }
+                DB::commit();
+                $request->session()->flash('success', 'Successfully updated.');
+                $products = $this->GetData(1);
+                return view('product.active',compact('products'));
+            }catch(\Illuminate\Database\QueryException $e){
+                DB::rollBack();
+                $errMess = $e->getMessage();
+                $request->session()->flash('error', 'Please check your network connection');
+            }
+        }
     }
 
     /**

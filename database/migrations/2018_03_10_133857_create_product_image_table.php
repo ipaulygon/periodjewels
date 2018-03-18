@@ -15,6 +15,7 @@ class CreateProductImageTable extends Migration
     {
         Schema::create('product_image', function (Blueprint $table) {
             $table->engine = 'InnoDB';
+            $table->increments('id');
             $table->unsignedInteger('productId');
             $table->text('image');
             $table->boolean('isMain');

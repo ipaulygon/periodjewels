@@ -16,9 +16,11 @@ class CreateEventTable extends Migration
         Schema::create('event', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name');
-            $table->timestamp('startDate');
-            $table->timestamp('endDate');
+            $table->string('name',50);
+            $table->date('startDate');
+            $table->date('endDate');
+            $table->text('address');
+            $table->text('description')->nullable();
             $table->boolean('isInclude')->default(1);
             $table->boolean('isActive')->default(1);
         });

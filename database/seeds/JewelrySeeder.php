@@ -12,7 +12,7 @@ class JewelrySeeder extends Seeder
     public function run()
     {
         DB::table('jewelry')->insert([
-            'name' => 'Diamonds',
+            'name' => '-N/A-',
             'description' => ''
         ]);
         DB::table('jewelry')->insert([

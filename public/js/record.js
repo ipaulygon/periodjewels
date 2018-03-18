@@ -10,12 +10,13 @@ $(document).on('change','#showDeactivated',function(e){
         success:function(data){
             $('#box-body').html(data);
             $('#tableData').DataTable({});
+            $('#loading').addClass('hidden');    
         },
         error: function(data){
             console.log('error');
+            $('#loading').addClass('hidden');    
         }
     });
-    $('#loading').addClass('hidden');    
 });
 // deactivate
 $(document).on('click','#btnDeactivate',function(e){
@@ -37,12 +38,13 @@ $(document).on('click','#btnDeactivate',function(e){
                         $('#box-body').html(data);
                         $('#tableData').DataTable({});
                         SuccessAlert();
+                        $('#loading').addClass('hidden');                
                     },
                     error:function(data){ 
                         ErrorAlert();
+                        $('#loading').addClass('hidden');                
                     }
                 });
-                $('#loading').addClass('hidden');                
             }
         }
     })
@@ -67,12 +69,13 @@ $(document).on('click','#btnReactivate',function(e){
                         $('#box-body').html(data);
                         $('#tableData').DataTable({});
                         SuccessAlert();
+                        $('#loading').addClass('hidden');                
                     },
                     error:function(data){ 
                         ErrorAlert();
+                        $('#loading').addClass('hidden');                
                     }
                 });
-                $('#loading').addClass('hidden');                
             }
         }
     })

@@ -27,6 +27,6 @@ class Controller extends BaseController
             View::share('user', $this->user);
             View::share('util', $util);
             return $next($request);
-        });        
+        });
     }
 }

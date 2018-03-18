@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Utility;
 
 class LoginController extends Controller
 {
@@ -23,6 +24,11 @@ class LoginController extends Controller
     public function username()
     {
         return 'username';
+    }
+
+    public function showLoginForm(){
+        $util = Utility::find(1);
+        return View('auth.login',compact('util'));
     }
 
     /**

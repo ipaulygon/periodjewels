@@ -16,16 +16,21 @@ class CreateProductTable extends Migration
         Schema::create('product', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->unsignedInteger('gemId');
             $table->unsignedInteger('jewelryId');
-            $table->double('carat',15,8)->nullable();
+            $table->double('carat',15,2)->nullable();
             $table->string('color',50)->nullable();
             $table->string('clarity',50)->nullable();
             $table->string('cut',50)->nullable();
             $table->string('origin',50)->nullable();
             $table->text('description');
-            $table->text('certificate')->nullable();
             $table->double('price',15,2);
+            $table->boolean('isSold')->default(0);
             $table->boolean('isActive')->default(1);
+            $table->foreign('gemId')
+                  ->references('id')->on('gem')
+                  ->onUpdate('cascade')
+                  ->onDelete('restrict');
             $table->foreign('jewelryId')
                   ->references('id')->on('jewelry')
                   ->onUpdate('cascade')

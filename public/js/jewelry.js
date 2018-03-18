@@ -14,18 +14,18 @@ function Reset(){
 // create
 $(document).on('submit', '#createForm', function(e){
     e.preventDefault();
-    $('.formGroup').removeClass('has-error');
+    $('.form-group').removeClass('has-error');
+    $('.text-danger li').remove();
     $('#submitCreate').button('loading');
     $('#loading').removeClass('hidden');
     $.ajax({
         type: "POST",
-        url: "/jewelry/store",
+        url: "/jewelry",
         data: $('#createForm').serialize(),
         success: function(data){
             if(data.errors){
                 $.each(data.errors, function(key,value){
                     $('#'+key+'Form').addClass('has-error');
-                    $('#'+key+'Error li').remove();
                     $.each(value, function(subkey, subvalue){
                         $('#'+key+'Error').append('<li>'+subvalue+'</li>');
                     });
@@ -37,20 +37,22 @@ $(document).on('submit', '#createForm', function(e){
                 Reset();
                 SuccessAlert();
             }
+            $('#submitCreate').button('reset');
+            $('#loading').addClass('hidden');
         },
         error: function(data){
             $('#createModal').modal('hide');
             ErrorAlert();
+            $('#submitCreate').button('reset');
+            $('#loading').addClass('hidden');
         }
     });
-    $('#submitCreate').button('reset');
-    $('#loading').addClass('hidden');
 });
 // update
 $(document).on('click','#btnUpdate',function(){
     var id = $(this).data('id');
-    var name = $(this).parent().parent().find('#dataName').text(); 
-    var description = $(this).parent().parent().find('#dataDescription').text();
+    var name = rowFinder($(this)).find('#dataName').text(); 
+    var description = rowFinder($(this)).find('#dataDescription').text();
     $('#idUpdate').val(id);
     $('#nameUpdate').val(name);
     $('#descriptionUpdate').val(description);
@@ -59,7 +61,8 @@ $(document).on('click','#btnUpdate',function(){
 
 $(document).on('submit','#updateForm',function(e){
     e.preventDefault();
-    $('.formGroup').removeClass('has-error');
+    $('.form-group').removeClass('has-error');
+    $('.text-danger li').remove();
     $('#submitUpdate').button('loading');
     $('#loading').removeClass('hidden');
     $.ajax({
@@ -70,7 +73,6 @@ $(document).on('submit','#updateForm',function(e){
             if(data.errors){
                 $.each(data.errors, function(key,value){
                     $('#'+key+'FormUpdate').addClass('has-error');
-                    $('#'+key+'ErrorUpdate li').remove();
                     $.each(value, function(subkey, subvalue){
                         $('#'+key+'ErrorUpdate').append('<li>'+subvalue+'</li>');
                     });
@@ -82,12 +84,14 @@ $(document).on('submit','#updateForm',function(e){
                 Reset();
                 SuccessAlert();
             }
+            $('#submitUpdate').button('reset');
+            $('#loading').addClass('hidden');
         },
         error: function(data){
             $('#updateModal').modal('hide');
             ErrorAlert();
+            $('#submitUpdate').button('reset');
+            $('#loading').addClass('hidden');
         }
     });
-    $('#submitUpdate').button('reset');
-    $('#loading').addClass('hidden');
 });

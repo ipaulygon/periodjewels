@@ -84,7 +84,7 @@
                 </div>
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li id="dashboard">
+                    <li class="{{(request()->is('dashboard') ? 'active' : '')}}">
                         <a href="{{url('/dashboard')}}">
                             <i class="fa fa-line-chart"></i>
                             <span>Dashboard</span>
@@ -92,8 +92,10 @@
                     </li>
                     @if($user->level==1)
                     <li class="header">MAINTENANCE</li>
-                    <li class="{{(request()->is('jewelry') ? 'active' : '')}}"><a href="{{url('/jewelry')}}"><i class="fa fa-diamond"></i> <span>Jewelry</span></a></li>
+                    <li class="{{(request()->is('gem') ? 'active' : '')}}"><a href="{{url('/gem')}}"><i class="fa fa-diamond"></i> <span>Gem</span></a></li>
+                    <li class="{{(request()->is('jewelry') ? 'active' : '')}}"><a href="{{url('/jewelry')}}"><i class="fa fa-life-ring"></i> <span>Jewelry</span></a></li>
                     <li class="{{(request()->is('product') ? 'active' : '')}}"><a href="{{url('/product')}}"><i class="fa fa-shopping-cart"></i> <span>Product</span></a></li>                    
+                    <li class="{{(request()->is('event') ? 'active' : '')}}"><a href="{{url('/event')}}"><i class="fa fa-bank"></i> <span>Event</span></a></li>                 
                     @endif
                     <li class="header">TRANSACTIONS</li>
                     <li class="header">QUERIES & REPORTS</li>
@@ -121,7 +123,7 @@
             <!-- /.content -->
         </div>
         <footer class="main-footer">
-            <strong>Copyright © {{date('Y')}} <a href="http://facebook.com">Periodjewels</a>.</strong> All rights reserved.
+            <strong>Copyright © {{date('Y')}} <a href="https://www.instagram.com/periodjewels_inc/">Periodjewels</a>.</strong> All rights reserved.
         </footer>
     </div>
     <!-- Scripts -->
@@ -174,6 +176,15 @@
             $('#clock').html(moment().format('dddd - MMMM D, YYYY h:mm:ss A'));
         }
         setInterval(update, 1000);
+        function rowFinder(row){
+            if($(row).closest('table').hasClass("collapsed")) {
+                var child = $(row).parents("tr.child");
+                row = $(child).prevAll(".parent");
+            } else {
+                row = $(row).parents('tr');
+            }
+            return row;
+        }
     </script>
     @yield('script')
 </body>
