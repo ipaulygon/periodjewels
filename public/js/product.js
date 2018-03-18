@@ -180,7 +180,6 @@ $(document).on('submit', '#createForm', function(e){
             $('#loading').addClass('hidden');
         },
         error: function(data){
-            console.log(data);
             $('#createModal').modal('hide');
             ErrorAlert();
             $('#submitCreate').button('reset');
