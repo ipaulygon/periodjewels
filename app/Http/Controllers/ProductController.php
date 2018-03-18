@@ -152,7 +152,7 @@ class ProductController extends Controller
                         ProductImage::create([
                             'productId' => $product->id,
                             'image' => $imageFile,
-                            'isMain' => ($key == $request->main ? 1 : 0)
+                            'isMain' => 0
                         ]);
                     }
                 }
