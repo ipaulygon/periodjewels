@@ -128,12 +128,14 @@ class ProductController extends Controller
                 ]);
                 $certificates = $request->file('certificates');
                 $images = $request->file('images');
+                $s3 = Storage::disk('s3');
                 if(!empty($certificates)){
                     foreach ($certificates as $key => $certificate) {
                         $date = date("Ymdhis".substr((string)microtime(), 1, 8));
                         $extension = $certificate->getClientOriginalExtension();
                         $certificateFile = "certificates/".$date.'.'.$extension;
                         $certificate->move("certificates",$certificateFile);
+                        $s3->put($certificateFile,'public');
                         ProductCertificate::create([
                             'productId' => $product->id,
                             'certificate' => $certificateFile

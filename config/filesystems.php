@@ -57,11 +57,18 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => env('AWS_KEY'),
-            'secret' => env('AWS_SECRET'),
-            'region' => env('AWS_REGION'),
-            'bucket' => env('AWS_BUCKET'),
+            'key' => 'AKIAJW2ZWH6RDFL7XVNQ',
+            'secret' => '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',
+            'region' => 'ap-southeast-1',
+            'bucket' => 'periodjewels',
         ],
+        // 's3' => [
+        //     'driver' => 's3',
+        //     'key' => env('AWS_KEY'),
+        //     'secret' => env('AWS_SECRET'),
+        //     'region' => env('AWS_REGION'),
+        //     'bucket' => env('AWS_BUCKET'),
+        // ],
 
     ],
 
