@@ -135,7 +135,7 @@ class ProductController extends Controller
                         $extension = $certificate->getClientOriginalExtension();
                         $certificateFile = "certificates/".$date.'.'.$extension;
                         // $certificate->move("certificates",$certificateFile);
-                        $s3->put($certificateFile,file_get_contents($certificate),'public');
+                        $s3->put($certificateFile,file_get_contents($certificate),'certificates');
                         ProductCertificate::create([
                             'productId' => $product->id,
                             'certificate' => $certificateFile
