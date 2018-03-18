@@ -148,12 +148,6 @@ $(document).on('submit', '#createForm', function(e){
     $('#submitCreate').button('loading');
     $('#loading').removeClass('hidden');
     var data = new FormData($('#createForm')[0]);
-    $.each($('#certificate').get(0).files,function(key,value){
-        data.append('certificates[]', value, key+'.jpg');
-    });
-    $.each($('#image').get(0).files,function(key,value){
-        data.append('images[]', value, key+'.jpg');
-    });
     $.ajax({
         type: "POST",
         url: "/product",
@@ -337,12 +331,6 @@ $(document).on('submit', '#updateForm', function(e){
     $('#submitUpdate').button('loading');
     $('#loading').removeClass('hidden');
     var data = new FormData($('#updateForm')[0]);
-    $.each($('#certificateUpdate').get(0).files,function(key,value){
-        data.append('certificates[]', value, key+'.jpg');
-    });
-    $.each($('#imageUpdate').get(0).files,function(key,value){
-        data.append('images[]', value, key+'.jpg');
-    });
     $.ajax({
         type: "POST",
         url: "/product/0",

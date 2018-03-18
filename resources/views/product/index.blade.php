@@ -176,12 +176,12 @@
                                         </div>
                                         <div class="form-group" id="certificateForm">
                                             <label for="">Certificate</label>
-                                            <input type="file" name="certificate" id="certificate" class="form-control btn btn-primary btn-flat btn-md" multiple>
+                                            <input type="file" name="certificate[]" id="certificate" class="form-control btn btn-primary btn-flat btn-md" multiple>
                                             <ul class="text-danger" id="certificateError"></ul>
                                         </div>
                                         <div class="form-group" id="imageForm">
                                             <label for="">Image</label>
-                                            <input type="file" name="image" id="image" class="form-control btn btn-primary btn-flat btn-md" multiple>
+                                            <input type="file" name="image[]" id="image" class="form-control btn btn-primary btn-flat btn-md" multiple>
                                             <ul class="text-danger" id="imageError"></ul>
                                         </div>
                                         <input type="hidden" name="main" id="main">
@@ -292,12 +292,12 @@
                                         </div>
                                         <div class="form-group" id="certificateFormUpdate">
                                             <label for="">Certificate</label>
-                                            <input type="file" name="certificate" id="certificateUpdate" class="form-control btn btn-primary btn-flat btn-md" multiple>
+                                            <input type="file" name="certificate[]" id="certificateUpdate" class="form-control btn btn-primary btn-flat btn-md" multiple>
                                             <ul class="text-danger" id="certificateErrorUpdate"></ul>
                                         </div>
                                         <div class="form-group" id="imageFormUpdate">
                                             <label for="">Image</label>
-                                            <input type="file" name="image" id="imageUpdate" class="form-control btn btn-primary btn-flat btn-md" multiple>
+                                            <input type="file" name="image[]" id="imageUpdate" class="form-control btn btn-primary btn-flat btn-md" multiple>
                                             <ul class="text-danger" id="imageErrorUpdate"></ul>
                                         </div>
                                         <input type="hidden" name="main" id="mainUpdate">

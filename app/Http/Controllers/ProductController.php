@@ -82,8 +82,8 @@ class ProductController extends Controller
             'origin' => 'max:50',
             'description' => 'required',
             'price' => 'required',
-            'certificates.*' => 'required',
-            'images.*' => 'required'
+            'certificate.*' => 'required',
+            'image.*' => 'required'
         ];
         $messages = [
             'unique' => ':attribute already exists.',
@@ -126,8 +126,8 @@ class ProductController extends Controller
                     'productId' => $product->id,
                     'price' => str_replace(',','',$request->price)                    
                 ]);
-                $certificates = $request->file('certificates');
-                $images = $request->file('images');
+                $certificates = $request->file('certificate');
+                $images = $request->file('image');
                 $s3 = Storage::disk('s3');
                 if(!empty($certificates)){
                     foreach ($certificates as $key => $certificate) {
@@ -209,8 +209,8 @@ class ProductController extends Controller
             'origin' => 'max:50',
             'description' => 'required',
             'price' => 'required',
-            'certificates.*' => 'required',
-            'images.*' => 'required'
+            'certificate.*' => 'required',
+            'image.*' => 'required'
         ];
         $messages = [
             'unique' => ':attribute already exists.',
@@ -254,8 +254,8 @@ class ProductController extends Controller
                     'productId' => $product->id,
                     'price' => str_replace(',','',$request->price)                    
                 ]);
-                $certificates = $request->file('certificates');
-                $images = $request->file('images');
+                $certificates = $request->file('certificate');
+                $images = $request->file('image');
                 $s3 = Storage::disk('s3');
                 if(!empty($certificates)){
                     foreach($product->certificate as $certificate){
