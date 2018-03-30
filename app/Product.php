@@ -38,6 +38,10 @@ class Product extends Model
         return $this->hasMany('App\ProductImage','productId');
     }
 
+    public function imageMain(){
+        return $this->hasMany('App\ProductImage','productId')->where('isMain',1);
+    }
+
     public function certificate(){
         return $this->hasMany('App\ProductCertificate','productId');
     }
