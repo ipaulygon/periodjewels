@@ -57,8 +57,8 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => 'AKIAJHRW5GC475A77S3Q',
-            'secret' => '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',
+            'key' => 'AKIAJAM2GTMNBGYS7AZQ',
+            'secret' => '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',
             'region' => 'us-east-1',
             'bucket' => 'us-periodjewels',
         ],
