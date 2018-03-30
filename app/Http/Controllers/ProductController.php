@@ -28,7 +28,6 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::where('isActive',1)->get();
-        return $products->first()->image->get();
         $jewelries = DB::table('jewelry as j')
             ->where('isActive',1)
             ->orderBy('name')
