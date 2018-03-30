@@ -41,11 +41,8 @@
                     <tr>
                         <td id="dataImage" data-image="{{$product->image}}">
                         @if(!empty($product->image))
-                            @if(!empty($product->image->where('isMain',1)->get()))
-                            <img class="img-responsive" src="{{URL::asset('https://s3.amazonaws.com/us-periodjewels/'.$product->image->where('isMain',1)->first()->image)}}" alt="" style="max-width:150px; background-size: contain">                            
-                            @else
                             <img class="img-responsive" src="{{URL::asset('https://s3.amazonaws.com/us-periodjewels/'.$product->image->first()->image)}}" alt="" style="max-width:150px; background-size: contain">                            
-                            @endif
+                            
                         @endif
                         </td>
                         <td id="dataGem" data-gem="{{$product->gem->id}}">{{$product->gem->name}}</td>
