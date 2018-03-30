@@ -28,7 +28,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::where('isActive',1)->get();
-        return (!empty(ProductImage::where('isMain',1)->get()) ? "shit" : "bitch");
+        return (count(ProductImage::where('isMain',1)->get() == 0) ? "shit" : "bitch");
         $jewelries = DB::table('jewelry as j')
             ->where('isActive',1)
             ->orderBy('name')
