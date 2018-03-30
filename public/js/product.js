@@ -298,7 +298,7 @@ $(document).on('click','#btnUpdate',function(){
                 '<div class="box box-solid">' +
                 '<div class="box-body box-profile">' +
                 '<center>' +
-                '<img class="img-responsive" id="imageThumbnail'+key+'" src="'+value.image+'" style="height:190px!important;background-size:contain;padding: 2px" />' +
+                '<img class="img-responsive" id="imageThumbnail'+key+'" src="https://s3.amazonaws.com/us-periodjewels/'+value.image+'" style="height:190px!important;background-size:contain;padding: 2px" />' +
                 '<button type="button" class="btn btn-default setMainUpdate" data-main="'+key+'"><i class="fa fa-circle-o"></i> Set Main</button>' +
                 '</center>' +
                 '</div>' +
@@ -311,7 +311,7 @@ $(document).on('click','#btnUpdate',function(){
                 '<div class="box box-solid">' +
                 '<div class="box-body box-profile">' +
                 '<center>' +
-                '<img class="img-responsive" id="imageThumbnail'+key+'" src="'+value.image+'" style="height:190px!important;background-size:contain;padding: 2px" />' +
+                '<img class="img-responsive" id="imageThumbnail'+key+'" src="https://s3.amazonaws.com/us-periodjewels/'+value.image+'" style="height:190px!important;background-size:contain;padding: 2px" />' +
                 '<button type="button" class="btn btn-primary imageMainUpdate" data-main="'+key+'"><i class="fa fa-check"></i> Main Image</button>' +
                 '</center>' +
                 '</div>' +
