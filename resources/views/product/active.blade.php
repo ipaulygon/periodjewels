@@ -15,13 +15,7 @@
         @foreach($products as $product)
         <tr>
             <td id="dataImage" data-image="{{$product->image}}">
-            @if(count($product->image) != 0)
-                @if(count($product->image->where('isMain',1)->get()) != 0)
-                <img class="img-responsive" src="{{URL::asset('https://s3.amazonaws.com/us-periodjewels/'.$product->image->where('isMain',1)->first()->image)}}" alt="" style="max-width:150px; background-size: contain">                            
-                @else
-                <img class="img-responsive" src="{{URL::asset('https://s3.amazonaws.com/us-periodjewels/'.$product->image->first()->image)}}" alt="" style="max-width:150px; background-size: contain">                            
-                @endif
-            @endif
+                <img class="img-responsive" src="{{URL::asset('https://s3.amazonaws.com/us-periodjewels/'.$product->image->first()->image)}}" alt="" style="max-width:150px; background-size: contain">
             </td>
             <td id="dataGem" data-gem="{{$product->gem->id}}">{{$product->gem->name}}</td>
             <td id="dataCarat" data-carat="{{$product->carat}}">{{number_format($product->carat,2)}}</td>

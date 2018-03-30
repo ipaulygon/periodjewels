@@ -157,10 +157,9 @@ class ProductController extends Controller
                     }
                 }
                 DB::commit();
-                // $request->session()->flash('success', 'Successfully added.');
-                // $products = $this->GetData(1);
-                // return view('product.active',compact('products'));
-                return "hello";
+                $request->session()->flash('success', 'Successfully added.');
+                $products = $this->GetData(1);
+                return view('product.active',compact('products'));
             }catch(\Illuminate\Database\QueryException $e){
                 DB::rollBack();
                 $errMess = $e->getMessage();
