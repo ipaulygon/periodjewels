@@ -65,7 +65,6 @@
                             @if(!empty($product->certificate))
                             <ul>
                                 @foreach($product->certificate as $certificate)
-                                    <li><img src="{{URL::asset('https://s3.amazonaws.com/us-periodjewels/'.$certificate->certificate)}}" alt=""></li>
                                     <li><a target="_blank" href="{{url('https://s3.amazonaws.com/us-periodjewels/'.$certificate->certificate)}}">{{$certificate->certificate}}</a></li>
                                 @endforeach
                             </ul>
