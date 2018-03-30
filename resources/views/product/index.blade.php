@@ -41,7 +41,7 @@
                     <tr>
                         <td id="dataImage" data-image="{{$product->image}}">
                         @if(!empty($product->image))
-                            @if(!empty($product->imageMain))
+                            @if(!empty($product->imageMain->first()))
                             <img class="img-responsive" src="{{URL::asset('https://s3.amazonaws.com/us-periodjewels/'.$product->imageMain->first()->image)}}" alt="" style="max-width:150px; background-size: contain">                            
                             @else
                             <img class="img-responsive" src="{{URL::asset('https://s3.amazonaws.com/us-periodjewels/'.$product->image->first()->image)}}" alt="" style="max-width:150px; background-size: contain">                            
