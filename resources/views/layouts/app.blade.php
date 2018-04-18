@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{$util->name}} | Welcome @yield('title')</title>
-    <link rel="icon" href="{{ URL::asset($util->logo) }}">
+    
     <!-- Styles -->
     @yield('style')
     <link rel="stylesheet" href="{{ URL::asset('bootstrap/dist/css/bootstrap.min.css') }}">
@@ -30,8 +29,7 @@
                 <div class="container">
                     <div class="navbar-header">
                         <a href="{{url('/')}}" class="navbar-brand">
-                            <img src="{{ URL::asset($util->logo) }}" width:"48px" height="48px" style="display: inline-block!important;margin-top: -15px" class="img-circle" alt="Logo">                        
-                            {{$util->name}}
+                            
                         </a>
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                             <i class="fa fa-bars"></i>
