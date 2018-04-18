@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{$util->name}} | Welcome @yield('title')</title>
+    <title>{{$util->name}} | @yield('title')</title>
     <link rel="icon" href="{{ URL::asset($util->logo) }}">
     <!-- Styles -->
     @yield('style')
