@@ -20,7 +20,7 @@ class Controller extends BaseController
     private $user;
 
     public function __construct() {
-        $this(function ($request, $next) {
+        $this->middleware(function ($request, $next) {
             $util = Utility::find(1);
             $this->id = Auth::id();
             $this->user = User::find($this->id);
