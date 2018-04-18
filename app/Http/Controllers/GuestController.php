@@ -15,9 +15,15 @@ use App\Event;
 
 class GuestController extends Controller
 {
+    private $util;
+
+    public function GuestController()
+    {
+        $util = Utility::find(1);
+    } 
 
     public function index(){
-        return View('welcome');
+        return View('welcome',compact('util'));
     }
 
     public function events(){
@@ -26,10 +32,10 @@ class GuestController extends Controller
             ->orderBy('name','desc')
             ->select('e.*')
             ->get();
-        return View('events',compact('events'));
+        return View('events',compact('util','events'));
     }
 
     public function about(){
-        return View('about');
+        return View('about',compact('util'));
     }
 }
