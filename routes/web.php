@@ -11,13 +11,11 @@
 |
 */
 
-Route::group(['middleware' => 'guest'], function(){
-    Auth::routes();
+Auth::routes();
 
-    Route::get('/', 'GuestController@index');
-    Route::get('/events', 'GuestController@events');
-    Route::get('/about', 'GuestController@about');
-});
+Route::get('/', 'GuestController@index');
+Route::get('/events', 'GuestController@events');
+Route::get('/about', 'GuestController@about');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/dashboard','DashboardController@index');
