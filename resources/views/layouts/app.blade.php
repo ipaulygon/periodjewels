@@ -1,7 +1,3 @@
-<?php
-    use App\Utility;
-    $util = Utility::find(1);
-?>
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <head>
@@ -10,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title> | @yield('title')</title>
-    <link rel="icon" href="{{ URL::asset($util->logo) }}">
     <!-- Styles -->
     @yield('style')
     <link rel="stylesheet" href="{{ URL::asset('bootstrap/dist/css/bootstrap.min.css') }}">
@@ -34,7 +28,6 @@
                 <div class="container">
                     <div class="navbar-header">
                         <a href="{{url('/')}}" class="navbar-brand">
-                            <img src="{{ URL::asset($util->logo) }}" width:"48px" height="48px" style="display: inline-block!important;margin-top: -15px" class="img-circle" alt="Logo">                        
                             
                         </a>
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
