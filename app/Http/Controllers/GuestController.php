@@ -17,7 +17,7 @@ class GuestController extends Controller
 {
     private $util;
 
-    public function __construct()
+    public function GuestController()
     {
         $util = Utility::find(1);
     } 
