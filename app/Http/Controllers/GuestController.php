@@ -17,8 +17,7 @@ class GuestController extends Controller
 {
 
     public function index(){
-        $util = Utility::find(1);
-        return View('welcome',compact('util'));
+        return View('welcome');
     }
 
     public function events(){
@@ -27,10 +26,10 @@ class GuestController extends Controller
             ->orderBy('name','desc')
             ->select('e.*')
             ->get();
-        return View('events',compact('util','events'));
+        return View('events',compact('events'));
     }
 
     public function about(){
-        return View('about',compact('util'));
+        return View('about');
     }
 }
