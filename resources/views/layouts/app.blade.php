@@ -1,8 +1,8 @@
-<!DOCTYPE html>
-@php
+<?php
     use App\Utility;
     $util = Utility::find(1);
-@endphp
+?>
+<!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <head>
     <meta charset="utf-8">
