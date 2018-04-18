@@ -23,11 +23,12 @@ class GuestController extends Controller
     } 
 
     public function index(){
-        return $util->name;
+        $util = Utility::find(1);
         return View('welcome',compact('util'));
     }
 
     public function events(){
+        $util = Utility::find(1);
         $events = DB::table('event as e')
             ->where('isActive',1)
             ->orderBy('name','desc')
