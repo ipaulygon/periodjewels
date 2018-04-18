@@ -23,6 +23,7 @@ class GuestController extends Controller
     } 
 
     public function index(){
+        return $util->name;
         return View('welcome',compact('util'));
     }
 
