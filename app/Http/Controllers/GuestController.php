@@ -15,13 +15,18 @@ use App\Event;
 
 class GuestController extends Controller
 {
+    private $util;
+
+    public function __construct()
+    {
+        $util = Utility::find(1);
+    } 
 
     public function index(){
-        return View('welcome');
+        return View('welcome',compact('util'));
     }
 
     public function events(){
-        $util = Utility::find(1);
         $events = DB::table('event as e')
             ->where('isActive',1)
             ->orderBy('name','desc')
