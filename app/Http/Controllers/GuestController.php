@@ -15,16 +15,9 @@ use App\Event;
 
 class GuestController extends Controller
 {
-    private $util;
-
-    public function GuestController()
-    {
-        $util = Utility::find(1);
-    } 
 
     public function index(){
-        $util = Utility::find(1);
-        return View('welcome',compact('util'));
+        return View('welcome');
     }
 
     public function events(){
