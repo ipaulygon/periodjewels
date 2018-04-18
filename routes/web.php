@@ -13,11 +13,9 @@
 
 Auth::routes();
 
-Route::group(['middleware' => 'guests'], function(){
-    Route::get('/', 'GuestController@index');
-    Route::get('/events', 'GuestController@events');
-    Route::get('/about', 'GuestController@about');
-});
+Route::get('/', 'GuestController@index');
+Route::get('/events', 'GuestController@events');
+Route::get('/about', 'GuestController@about');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/dashboard','DashboardController@index');
