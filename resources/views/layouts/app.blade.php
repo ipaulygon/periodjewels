@@ -53,7 +53,6 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="container">
-                            <h1>@yield('title')</h1>
                             @yield('content')          
                         </div>
                     </div>

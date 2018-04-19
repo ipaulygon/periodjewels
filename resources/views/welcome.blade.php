@@ -40,50 +40,52 @@
         </div>
     </div>
 </div>
-<div class="col-md-4">
-    <div class="cards">
-        <div class="fades reveals images">
-            <img class="visibles contents" src="{{URL::asset('/img/ring201804192.jpg')}}">
-            <img class="hiddens contents" src="{{URL::asset('/img/ring201804191.jpg')}}">
-        </div>
-        <div class="contents">
-            <div class="headers">
-                Rings
+<div class="col-md-12">
+    <div class="col-md-4">
+        <div class="cards">
+            <div class="fades reveals images">
+                <img class="visibles contents" src="{{URL::asset('/img/ring201804192.jpg')}}">
+                <img class="hiddens contents" src="{{URL::asset('/img/ring201804191.jpg')}}">
             </div>
-            <div class="descriptions">
-                Finest gems and rings for wedding or anniversary!
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-4">
-    <div class="cards">
-        <div class="fades reveals images">
-            <img class="visibles contents" src="{{URL::asset('/img/bracelet201804191.jpg')}}">
-            <img class="hiddens contents" src="{{URL::asset('/img/bracelet201804192.jpg')}}">
-        </div>
-        <div class="contents">
-            <div class="headers">
-                Bracelets
-            </div>
-            <div class="descriptions">
-                High quality bracelets with an exquisite design.
+            <div class="contents">
+                <div class="headers">
+                    Rings
+                </div>
+                <div class="descriptions">
+                    Finest gems and rings for wedding or anniversary!
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="col-md-4">
-    <div class="cards">
-        <div class="fades reveals images">
-            <img class="visibles contents" src="{{URL::asset('/img/necklace201804192.jpg')}}">
-            <img class="hiddens contents" src="{{URL::asset('/img/necklace201804191.jpg')}}">
-        </div>
-        <div class="contents">
-            <div class="headers">
-                Necklaces
+    <div class="col-md-4">
+        <div class="cards">
+            <div class="fades reveals images">
+                <img class="visibles contents" src="{{URL::asset('/img/bracelet201804191.jpg')}}">
+                <img class="hiddens contents" src="{{URL::asset('/img/bracelet201804192.jpg')}}">
             </div>
-            <div class="descriptions">
-                Necklaces that will mesmerize you.
+            <div class="contents">
+                <div class="headers">
+                    Bracelets
+                </div>
+                <div class="descriptions">
+                    High quality bracelets with an exquisite design.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="cards">
+            <div class="fades reveals images">
+                <img class="visibles contents" src="{{URL::asset('/img/necklace201804192.jpg')}}">
+                <img class="hiddens contents" src="{{URL::asset('/img/necklace201804191.jpg')}}">
+            </div>
+            <div class="contents">
+                <div class="headers">
+                    Necklaces
+                </div>
+                <div class="descriptions">
+                    Necklaces that will mesmerize you.
+                </div>
             </div>
         </div>
     </div>

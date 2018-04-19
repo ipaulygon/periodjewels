@@ -41,7 +41,8 @@ class GuestController extends Controller
             ->orderBy('name','desc')
             ->select('j.*')
             ->get();
-        return View('collection',compact('util','jewelries'));
+        $products = Product::where('isActive',1)->get();
+        return View('collection',compact('util','jewelries','products'));
     }
 
     public function about(){

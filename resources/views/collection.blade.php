@@ -14,18 +14,32 @@
     <div class="box-body">
         <div class="row">
             <div class="col-md-12">
-                <ul class="nav nav-tabs">
-                    <li role="presentation" class="active"><a href="#">Home</a></li>
-                    <li role="presentation"><a href="#">Profile</a></li>
-                    <li role="presentation"><a href="#">Messages</a></li>
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        @foreach($jewelries as $jewelry)
+                        <li role="presentation" class="{{($loop->first ? 'active' : '')}}"><a href="#{{$jewelry->id}}">{{$jewelry->name}}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="tab-content">
                     @foreach($jewelries as $jewelry)
-                    @if ($loop->first)
-                    <li role="presentation" class="active"><a href="#">{{$jewelry->name}}</a></li>
-                    @else
-                    <li role="presentation"><a href="#">{{$jewelry->name}}</a></li>
-                    @endif
+                        <div class="tab-pane {{($loop->first ? 'active' : '')}}" id="{{$jewelry->id}}">
+                            <div class="col-md-12">
+                            @foreach($products->where('jewelryId',$jewelry->id)->get() as $product)
+                            <div class="col-md-3">
+                            @if(!empty($product->image))
+                                @if(count($product->image->where('isMain',1))!=0)
+                                <img class="img-responsive" src="{{URL::asset($util->site.$product->image->where('isMain',1)->first()->image)}}" alt="" style="max-width:150px; background-size: contain">                            
+                                @else
+                                <img class="img-responsive" src="{{URL::asset($util->site.$product->image->first()->image)}}" alt="" style="max-width:150px; background-size: contain">                            
+                                @endif
+                            @endif
+                            </div>
+                            @endforeach
+                            </div>
+                        </div>
                     @endforeach
-                </ul>
+                </div>
             </div>
         </div>
     </div>
