@@ -27,7 +27,7 @@ class LoginController extends Controller
     }
 
     public function showLoginForm(){
-        $util = Utility::find(1);
+        $util = Utility::firstOrFail();
         return View('auth.login',compact('util'));
     }
 
