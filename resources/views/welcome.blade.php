@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{"Home"}}
+@stop
+
 @section('content')
 <div class="box box-primary">
     <div class="box-body">
@@ -39,8 +43,8 @@
 <div class="col-md-4">
     <div class="cards">
         <div class="fades reveals images">
-            <img class="visibles contents" src="{{URL::asset('/img/ring201804191.jpg')}}">
-            <img class="hiddens contents" src="{{URL::asset('/img/ring201804192.jpg')}}">
+            <img class="visibles contents" src="{{URL::asset('/img/ring201804192.jpg')}}">
+            <img class="hiddens contents" src="{{URL::asset('/img/ring201804191.jpg')}}">
         </div>
         <div class="contents">
             <div class="headers">
@@ -48,6 +52,38 @@
             </div>
             <div class="descriptions">
                 Finest gems and rings for wedding or anniversary!
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="cards">
+        <div class="fades reveals images">
+            <img class="visibles contents" src="{{URL::asset('/img/bracelet201804191.jpg')}}">
+            <img class="hiddens contents" src="{{URL::asset('/img/bracelet201804192.jpg')}}">
+        </div>
+        <div class="contents">
+            <div class="headers">
+                Bracelets
+            </div>
+            <div class="descriptions">
+                High quality bracelets with an exquisite design.
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="cards">
+        <div class="fades reveals images">
+            <img class="visibles contents" src="{{URL::asset('/img/necklace201804192.jpg')}}">
+            <img class="hiddens contents" src="{{URL::asset('/img/necklace201804191.jpg')}}">
+        </div>
+        <div class="contents">
+            <div class="headers">
+                Necklaces
+            </div>
+            <div class="descriptions">
+                Necklaces that will mesmerize you.
             </div>
         </div>
     </div>

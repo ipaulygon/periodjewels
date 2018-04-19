@@ -54,9 +54,9 @@
             </section>
             <section class="content">
                 <div class="row">
+                    @yield('content')          
                     <div class="col-md-12">
                         <div class="container">
-                            @yield('content')          
                         </div>
                     </div>
                 </div>

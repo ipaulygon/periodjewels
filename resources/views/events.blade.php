@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{"Events"}}
+@stop
+
 @section('content')
 <div class="box box-primary">
     <div class="box-header">
