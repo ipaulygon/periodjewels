@@ -41,7 +41,7 @@
                     <ul class="nav navbar-nav">
                         <li class="{{(request()->is('/') ? 'active' : '')}}"><a href="{{url('/')}}">Home</a></li>
                         <li class="{{(request()->is('events') ? 'active' : '')}}"><a href="{{url('/events')}}">Events</a></li>
-                        <li class="{{(request()->is('collections') ? 'active' : '')}}"><a href="{{url('/collections')}}">Collection</a></li>
+                        <li class="{{(request()->is('collection') ? 'active' : '')}}"><a href="{{url('/collection')}}">Collection</a></li>
                         <li  class="{{(request()->is('about') ? 'active' : '')}}"><a href="{{url('/about')}}">About</a></li>
                     </ul>
                     </div>
@@ -49,13 +49,11 @@
             </nav>
         </header>
         <div class="content-wrapper">
-            <section class="content-header">
-                <h1>@yield('title')</h1>
-            </section>
             <section class="content">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="container">
+                            <h1>@yield('title')</h1>
                             @yield('content')          
                         </div>
                     </div>
