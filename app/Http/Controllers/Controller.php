@@ -21,7 +21,7 @@ class Controller extends BaseController
 
     public function __construct() {
         $this->middleware(function ($request, $next) {
-            $util = Utility::find(1);
+            $util = Utility::get()->first();
             $this->id = Auth::id();
             $this->user = User::find($this->id);
             View::share('user', $this->user);

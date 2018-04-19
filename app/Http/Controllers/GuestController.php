@@ -19,7 +19,7 @@ class GuestController extends Controller
 
     public function GuestController()
     {
-        $util = Utility::find(1);
+        $util = Utility::get()->first();
     } 
 
     public function index(){
