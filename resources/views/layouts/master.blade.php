@@ -1,3 +1,6 @@
+@php
+    $site = 'https://s3.amazonaws.com/us-periodjewels/';
+@endphp
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <head>

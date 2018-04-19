@@ -19,7 +19,7 @@ class GuestController extends Controller
 
     public function GuestController()
     {
-        $util = Utility::get()->first();
+        $util = Utility::firstOrFail();
     } 
 
     public function index(){
