@@ -36,7 +36,7 @@
         </div>
     </div>
 </div>
-@for($i=0;$i<3;$i++)
+@foreach($products as $product)
     <div class="col-md-4">
         <div class="text-center">
             <img src="" alt="" class="img-circle">
@@ -44,5 +44,5 @@
             <p>Description</p>
         </div>
     </div>
-@endfor
+@endforeach
 @endsection
