@@ -37,6 +37,16 @@ textarea{
     display: block;
     width: 100%;
 }
+.card{
+	max-width: 100%;
+	width: 290px;
+	min-height: 0px;
+	background: #FFFFFF;
+	padding: 0em;
+	border: none;
+	border-radius: 0.28571429rem;
+	border: 1px solid #e0e1e2;
+}
 .card > .image {
 	display: block;
 	padding: 5px;
