@@ -8,7 +8,7 @@
 <div class="box box-primary">
     <div class="box-header">
         <center>
-            <h3 class="box-title">About Us</h3>
+            <h3 class="box-title with-border">About Us</h3>
         </center>
     </div>
     <div class="box-body">
