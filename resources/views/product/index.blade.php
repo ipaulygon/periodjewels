@@ -42,9 +42,9 @@
                         <td id="dataImage" data-image="{{$product->image}}">
                         @if(!empty($product->image))
                             @if(count($product->image->where('isMain',1))!=0)
-                            <img class="img-responsive" src="{{URL::asset($site.$product->image->where('isMain',1)->first()->image)}}" alt="" style="max-width:150px; background-size: contain">                            
+                            <img class="img-responsive" src="{{URL::asset($util->site.$product->image->where('isMain',1)->first()->image)}}" alt="" style="max-width:150px; background-size: contain">                            
                             @else
-                            <img class="img-responsive" src="{{URL::asset($site.$product->image->first()->image)}}" alt="" style="max-width:150px; background-size: contain">                            
+                            <img class="img-responsive" src="{{URL::asset($util->site.$product->image->first()->image)}}" alt="" style="max-width:150px; background-size: contain">                            
                             @endif
                         @endif
                         </td>
@@ -65,7 +65,7 @@
                             @if(!empty($product->certificate))
                             <ul>
                                 @foreach($product->certificate as $certificate)
-                                    <li><a target="_blank" href="{{url($site.$certificate->certificate)}}">{{$certificate->certificate}}</a></li>
+                                    <li><a target="_blank" href="{{url($util->site.$certificate->certificate)}}">{{$certificate->certificate}}</a></li>
                                 @endforeach
                             </ul>
                             @endif

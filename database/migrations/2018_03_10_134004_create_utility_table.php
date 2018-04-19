@@ -20,6 +20,7 @@ class CreateUtilityTable extends Migration
             $table->string('name',100);
             $table->text('address');
             $table->text('logo');
+            $table->string('site',150);
         });
         
     }

@@ -58,6 +58,10 @@ function Reset(){
     $('#priceUpdate').val();
     $('#certificateUpdate').val('');
     $('#imageUpdate').val('');
+    $('#certificateList').children().remove();
+    $('#imagePreview').children().remove();
+    $('#certificateListUpdate').children().remove();
+    $('#imagePreviewUpdate').children().remove();
     $('.select2').select2();
 }
 
@@ -339,7 +343,6 @@ $(document).on('submit', '#updateForm', function(e){
         contentType: false,
         cache: false,
         success: function(data){
-            console.log(data);
             if(data.errors){
                 $.each(data.errors, function(key,value){
                     $('#'+key+'FormUpdate').addClass('has-error');

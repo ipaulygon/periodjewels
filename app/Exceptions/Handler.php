@@ -45,7 +45,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        $util = Utility::find(1);
+        $util = Utility::firstOrFail();
         if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
             return response()->view('layouts.404',compact('util'));
         }
@@ -67,7 +67,7 @@ class Handler extends ExceptionHandler
      */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
-        $util = Utility::find(1);
+        $util = Utility::firstOrFail();
         if ($request->expectsJson()) {
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }

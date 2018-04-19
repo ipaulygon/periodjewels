@@ -36,4 +36,13 @@
         </div>
     </div>
 </div>
+@for($i=0;$i<3;$i++)
+    <div class="col-md-4">
+        <div class="text-center">
+            <img src="" alt="" class="img-circle">
+            <h4>Name</h4>
+            <p>Description</p>
+        </div>
+    </div>
+@endfor
 @endsection

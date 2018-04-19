@@ -24,10 +24,8 @@ class Controller extends BaseController
             $util = Utility::firstOrFail();
             $this->id = Auth::id();
             $this->user = User::find($this->id);
-            $site = 'https://s3.amazonaws.com/us-periodjewels/';
             View::share('user', $this->user);
             View::share('util', $util);
-            View::share('site', $site);
             return $next($request);
         });
     }

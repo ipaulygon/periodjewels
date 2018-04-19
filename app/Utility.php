@@ -11,6 +11,7 @@ class Utility extends Model
     protected $fillable = [
     	'name',
         'address',
-        'logo'
+        'logo',
+        'site'
     ];
 }

@@ -14,7 +14,8 @@ class UtilitySeeder extends Seeder
         DB::table('utility')->insert([
             'name' => 'Periodjewels',
             'address' => '9454 Wilshire Blvd Suite M18 Beverly Hills, CA 90212',
-            'logo' => 'img/logo.png'
+            'logo' => 'img/logo.png',
+            'site' => 'https://s3.amazonaws.com/us-periodjewels/'
         ]);
     }
 }
