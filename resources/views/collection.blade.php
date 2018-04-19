@@ -25,7 +25,7 @@
                     @foreach($jewelries as $jewelry)
                         <div class="tab-pane {{($loop->first ? 'active' : '')}}" id="{{$jewelry->id}}">
                             <div class="col-md-12">
-                            @foreach($products->where('jewelryId',$jewelry->id)->get() as $product)
+                            @foreach($products->where('jewelryId',$jewelry->id) as $product)
                             <div class="col-md-3">
                             @if(!empty($product->image))
                                 @if(count($product->image->where('isMain',1))!=0)
