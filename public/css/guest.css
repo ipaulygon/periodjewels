@@ -3,7 +3,7 @@ body{
     font-size: 1.4em;
     background: url("/img/background.png")!important;
 }
-.card{
+.cards{
 	max-width: 100%;
 	width: 290px;
 	min-height: 0px;
@@ -13,18 +13,18 @@ body{
 	border-radius: 0.28571429rem;
 	border: 1px solid #e0e1e2;
 }
-.card > .image {
+.cards > .images {
 	display: block;
 	padding: 5px;
 	background: rgba(0, 0, 0, 0.05);
 }
-.card > .image > img {
+.cards > .images > img {
 	display: block;
 	width: 100%;
 	height: auto;
 	border-radius: inherit;
 }
-.card > .content{
+.cards > .contents{
 	border: none;
 	border-top: 1px solid rgba(34, 36, 38, 0.1);
 	background: none;
@@ -34,37 +34,37 @@ body{
 	font-size: 1em;
 	border-radius: 0em;
 }
-.card > .content > .header{
+.cards > .contents > .headers{
 	font-weight: bold;
 	font-size: 1.28571429em;
 	margin-top: -0.21425em;
 	line-height: 1.2857em;
 }
-.card > .content > .description {
+.cards > .contents > .descriptions {
 	clear: both;
 	color: rgba(0, 0, 0, 0.68);
 }
-.image {
+.images {
 	display: inline-block;
 	vertical-align: middle;
 	max-width: 100%;
 	background-color: transparent;
 	border: none!important;
 }
-img.image {
+img.images {
 	display: block;
 }
-.image img {
+.images img {
 	display: block;
 	max-width: 100%;
 	height: auto;
 }
-.reveal {
+.reveals {
 	display: inherit;
 	position: relative !important;
 	font-size: 0em !important;
 }
-.reveal > .visible.content {
+.reveals > .visibles.contents {
 	position: absolute !important;
 	top: 0em !important;
 	left: 0em !important;
@@ -72,18 +72,18 @@ img.image {
 	-webkit-transition: all 0.5s ease 0.1s;
 	transition: all 0.5s ease 0.1s;
 }
-.reveal > .hidden.content {
+.reveals > .hiddens.contents {
 	position: relative !important;
 	z-index: 2 !important;
 }
-.active.reveal .visible.content,
-.reveal:hover .visible.content {
+.actives.reveals .visibles.contents,
+.reveals:hover .visibles.contents {
 	z-index: 4 !important;
 }
-.fade.reveal > .visible.content {
+.fades.reveals > .visibles.contents {
 	opacity: 1;
 }
-.fade.active.reveal > .visible.content,
-.fade.reveal:hover > .visible.content {
+.fades.actives.reveals > .visibles.contents,
+.fades.reveals:hover > .visibles.contents {
 	opacity: 0;
 }

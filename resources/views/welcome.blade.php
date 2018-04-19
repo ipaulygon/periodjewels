@@ -37,16 +37,16 @@
     </div>
 </div>
 <div class="col-md-4">
-    <div class="card">
-        <div class="fade reveal image">
-            <img class="visible content" src="{{URL::asset('/img/ring201804191.jpg')}}" width="400" length="400">
-            <img class="hidden content" src="{{URL::asset('/img/ring201804192.jpg')}}" width="400" length="400">
+    <div class="cards">
+        <div class="fades reveals images">
+            <img class="visibles contents" src="{{URL::asset('/img/ring201804191.jpg')}}" width="400" length="400">
+            <img class="hiddend contents" src="{{URL::asset('/img/ring201804192.jpg')}}" width="400" length="400">
         </div>
-        <div class="content">
-            <div class="header">
+        <div class="contents">
+            <div class="headers">
                 Rings
             </div>
-            <div class="description">
+            <div class="descriptions">
                 Finest gems and rings for wedding or anniversary!
             </div>
         </div>
