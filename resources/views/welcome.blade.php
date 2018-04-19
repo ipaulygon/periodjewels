@@ -36,13 +36,20 @@
         </div>
     </div>
 </div>
-@foreach($products as $product)
-    <div class="col-md-4">
-        <div class="text-center">
-            <img src="" alt="" class="img-circle">
-            <h4>Name</h4>
-            <p>Description</p>
+<div class="col-md-4">
+    <div class="card">
+        <div class="fade reveal image">
+            <img class="visible content" src="{{URL::asset('/img/ring201804191.jpg')}}">
+            <img class="hidden content" src="{{URL::asset('/img/ring201804192.jpg')}}">
+        </div>
+        <div class="content">
+            <div class="header">
+                Rings
+            </div>
+            <div class="description">
+                Finest gems and rings for wedding or anniversary!
+            </div>
         </div>
     </div>
-@endforeach
+</div>
 @endsection

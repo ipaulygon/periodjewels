@@ -37,3 +37,77 @@ textarea{
     display: block;
     width: 100%;
 }
+.card > .image {
+	display: block;
+	padding: 5px;
+	background: rgba(0, 0, 0, 0.05);
+}
+.card > .image > img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: inherit;
+}
+.card > .content{
+	border: none;
+	border-top: 1px solid rgba(34, 36, 38, 0.1);
+	background: none;
+	margin: 0em;
+	padding: 1em 1em;
+	box-shadow: none;
+	font-size: 1em;
+	border-radius: 0em;
+}
+.card > .content > .header{
+	font-weight: bold;
+	font-size: 1.28571429em;
+	margin-top: -0.21425em;
+	line-height: 1.2857em;
+}
+.card > .content > .description {
+	clear: both;
+	color: rgba(0, 0, 0, 0.68);
+}
+.image {
+	display: inline-block;
+	vertical-align: middle;
+	max-width: 100%;
+	background-color: transparent;
+	border: none!important;
+}
+img.image {
+	display: block;
+}
+.image img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+.reveal {
+	display: inherit;
+	position: relative !important;
+	font-size: 0em !important;
+}
+.reveal > .visible.content {
+	position: absolute !important;
+	top: 0em !important;
+	left: 0em !important;
+	z-index: 3 !important;
+	-webkit-transition: all 0.5s ease 0.1s;
+	transition: all 0.5s ease 0.1s;
+}
+.reveal > .hidden.content {
+	position: relative !important;
+	z-index: 2 !important;
+}
+.active.reveal .visible.content,
+.reveal:hover .visible.content {
+	z-index: 4 !important;
+}
+.fade.reveal > .visible.content {
+	opacity: 1;
+}
+.fade.active.reveal > .visible.content,
+.fade.reveal:hover > .visible.content {
+	opacity: 0;
+}

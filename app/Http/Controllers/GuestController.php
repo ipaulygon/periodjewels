@@ -24,18 +24,15 @@ class GuestController extends Controller
 
     public function index(){
         $products = DB::select(DB::raw('
-        SELECT *
-        FROM product AS p
-        JOIN product_image AS pi
-        WHERE p.id IN (
-            SELECT TOP 2 id
-            FROM product as p
-            WHERE p.jewelry = p.jewelry
-            ORDER BY ID DESC)
-        ORDER BY p.id;
+        SELECT p.*, pi.image, j.*
+        FROM product as p
+        JOIN product_image as pi ON pi.productId = p.id
+        JOIN jewelry as j ON j.id = p.jewelryId
+        LEFT OUTER JOIN product as pd ON (p.jewelryId = pd.jewelryId AND p.id < pd.id)
+        GROUP BY p.id
+        HAVING COUNT(*) < 2
+        ORDER BY j.name
         '));
-        // $products = Product::where('isActive',1)->get();
-        return $products;
         return View('welcome',compact('util','products'));
     }
 
