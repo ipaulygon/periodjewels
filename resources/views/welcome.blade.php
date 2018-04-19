@@ -37,6 +37,7 @@
     </div>
 </div>
 <div class="col-md-4">
+    <div class="card">
         <div class="fade reveal image">
             <img class="visible content" src="{{URL::asset('/img/ring201804191.jpg')}}">
             <img class="hidden content" src="{{URL::asset('/img/ring201804192.jpg')}}">
