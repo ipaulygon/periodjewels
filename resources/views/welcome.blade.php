@@ -39,8 +39,8 @@
 <div class="col-md-4">
     <div class="cards">
         <div class="fades reveals images">
-            <img class="visibles contents" src="{{URL::asset('/img/ring201804191.jpg')}}" width="400" length="400">
-            <img class="hiddend contents" src="{{URL::asset('/img/ring201804192.jpg')}}" width="400" length="400">
+            <img class="visibles contents" src="{{URL::asset('/img/ring201804191.jpg')}}">
+            <img class="hiddens contents" src="{{URL::asset('/img/ring201804192.jpg')}}">
         </div>
         <div class="contents">
             <div class="headers">
