@@ -15,6 +15,7 @@ Auth::routes();
 
 Route::get('/', 'GuestController@index');
 Route::get('/events', 'GuestController@events');
+Route::get('/collection', 'GuestController@collection');
 Route::get('/about', 'GuestController@about');
 
 Route::group(['middleware' => 'auth'], function() {

@@ -35,6 +35,15 @@ class GuestController extends Controller
         return View('events',compact('util','events'));
     }
 
+    public function collection(){
+        $jewelries = DB::table('jewelry as j')
+            ->where('isActive',1)
+            ->orderBy('name','desc')
+            ->select('j.*')
+            ->get();
+        return View('collection',compact('util','jewelries'));
+    }
+
     public function about(){
         return View('about',compact('util'));
     }
