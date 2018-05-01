@@ -1,7 +1,54 @@
 body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1.4em;
-    background: url("/img/background.png")!important;
+    font-family: Segoe UI,SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 1.4em;
+}
+.box.box-primary {
+	border-top-color: #181a1d;
+}
+.nav-tabs-custom > .nav-tabs > li.active {
+	border-top-color: #181a1d;
+}
+.divider{
+	border-right: 1px solid white;
+}
+.footer {
+	background-color: #101112!important;
+	color: white;
+}
+h4.heading:after{
+	display:block;
+	width: 10%;
+	border-bottom: 1px solid black;
+	margin-top: 10px;
+	content: "";
+}
+.heading{
+	margin-bottom: 20px
+}
+.heading:after{
+	display:block;
+	width: 50px;
+	border-bottom: 1px solid black;
+	margin-top: 10px;
+	content: "";
+}
+.inverse-body {
+	background-color: #181a1d;
+	border-color: #080808;
+	color: white;
+}
+.inverse-body .heading:after{
+	border-bottom: 1px solid white;
+}
+.inverse-body h4.heading:after{
+	border-bottom: 1px solid white;
+}
+.margin-bottom{
+	margin-bottom: 100px;
+}
+.margin-padding{
+	padding: 50px 0 100px 0;
+	margin-top: 50px;
 }
 .cards{
 	max-width: 100%;
@@ -12,6 +59,7 @@ body{
 	border: none;
 	border-radius: 0.28571429rem;
 	border: 1px solid #96999c;
+	margin: 10px
 }
 .cards > .images {
 	display: block;

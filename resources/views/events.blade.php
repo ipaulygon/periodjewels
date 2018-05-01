@@ -5,36 +5,38 @@
 @stop
 
 @section('content')
-<div class="box box-primary">
-    <div class="box-header">
-        <center>
-            <h3 class="box-title with-border">Events</h3>
-        </center>
-    </div>
-    <div class="box-body">
-        <div class="row">
-            <form action="">
-                @if(!empty($events))
-                    @foreach($events as $key => $event)
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="col-md-6">
-                                <label for="">Event: </label>
-                                <p>{{$event->name}}</p>
-                                <label for="">Duration: </label>
-                                <p>{{date('F j, Y',strtotime($event->startDate))}} - {{date('F j, Y', strtotime($event->endDate))}}</p>
-                                <label for="">Address: </label>
-                                <p>{{$event->address}}</p>
-                                <label for="">Description: </label>
-                                <p>{{$event->description}}</p>
+<div class="container">
+    <div class="box box-primary">
+        <div class="box-header">
+            <center>
+                <h3 class="box-title with-border">Events</h3>
+            </center>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <form action="">
+                    @if(!empty($events))
+                        @foreach($events as $key => $event)
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="col-md-6">
+                                    <label for="">Event: </label>
+                                    <p>{{$event->name}}</p>
+                                    <label for="">Duration: </label>
+                                    <p>{{date('F j, Y',strtotime($event->startDate))}} - {{date('F j, Y', strtotime($event->endDate))}}</p>
+                                    <label for="">Address: </label>
+                                    <p>{{$event->address}}</p>
+                                    <label for="">Description: </label>
+                                    <p>{{$event->description}}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="googleMap{{$key}}" style="height:400px;width:100%;"></div>
+                                    <script>myMap("{{$event->address}}",{{$key}})</script>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <div id="googleMap{{$key}}" style="height:400px;width:100%;"></div>
-                                <script>myMap("{{$event->address}}",{{$key}})</script>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
-            </form>
+                        @endforeach
+                    @endif
+                </form>
+            </div>
         </div>
     </div>
 </div>

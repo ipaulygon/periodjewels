@@ -23,10 +23,10 @@
     </script>
     @yield('headerScript')
 </head>
-<body id="mainBody" class="layout-top-nav skin-purple">
+<body id="mainBody" class="layout-top-nav">
     <div class="wrapper">
-        <header class="main-header">
-            <nav class="navbar navbar-static-top">
+        <header class="main-header margin-bottom">
+            <nav class="navbar navbar-fixed-top navbar-inverse">
                 <div class="container">
                     <div class="navbar-header">
                         <a href="{{url('/')}}" class="navbar-brand">
@@ -42,25 +42,27 @@
                         <li class="{{(request()->is('/') ? 'active' : '')}}"><a href="{{url('/')}}">Home</a></li>
                         <li class="{{(request()->is('events') ? 'active' : '')}}"><a href="{{url('/events')}}">Events</a></li>
                         <li class="{{(request()->is('collection') ? 'active' : '')}}"><a href="{{url('/collection')}}">Collection</a></li>
-                        <li  class="{{(request()->is('about') ? 'active' : '')}}"><a href="{{url('/about')}}">About</a></li>
                     </ul>
                     </div>
                 </div>
             </nav>
         </header>
-        <div class="content-wrapper">
-            <section class="content">
+        @yield('content')
+        <footer class="main-footer footer">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="container">
-                            @yield('content')          
-                        </div>
+                    <div class="col-xs-12 col-md-6 divider">
+                        <h4>PERIODJEWELS</h4>
+                        <p>All rights reserved Periodjewels Inc.</p>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <p>9454 Wilshire Blvd Suite #M18 Beverly Hills, CA 90212</p>
+                        <p>310.777.0360 | 310.777.0329</p>
+                        <p>info@periodjewels.com | ronny@periodjewels.com</p>
+                        © Periodjewels Inc.
                     </div>
                 </div>
-            </section>
-        </div>
-        <footer class="main-footer">
-            <strong>Copyright © {{date('Y')}} <a href="https://www.instagram.com/periodjewels_inc/">Periodjewels</a>.</strong> All rights reserved.
+            </div>   
         </footer>
     </div>
     <!-- Scripts -->
